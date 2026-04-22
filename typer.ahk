@@ -8,7 +8,7 @@ LastText := ""
 SavedDelay := "60"
 if FileExist(SettingsFile) {
     LastText := IniRead(SettingsFile, "Data", "LastText", "")
-    SavedDelay := IniRead(SettingsFile, "Settings", "Base Speed (ms)", "60")
+    SavedDelay := IniRead(SettingsFile, "Settings", "Speed (ms)", "60")
 }
 
 ; --- GUI Definition ---
@@ -42,7 +42,7 @@ StartTyping(*) {
     
     ; Save settings
     IniWrite(RawContent, SettingsFile, "Data", "LastText")
-    IniWrite(BaseDelay, SettingsFile, "Settings", "Base Speed (ms)")
+    IniWrite(BaseDelay, SettingsFile, "Settings", "Speed (ms)")
 
     ; --- 3 SECOND COUNTDOWN ---
     Loop 3 {
@@ -72,7 +72,7 @@ SaveAndExit(*) {
     if (InputEdit.Value != "") {
         try {
             IniWrite(InputEdit.Value, SettingsFile, "Data", "LastText")
-            IniWrite(DelayEdit.Value, SettingsFile, "Settings", "Base Speed (ms)")
+            IniWrite(DelayEdit.Value, SettingsFile, "Settings", "Speed (ms)")
         }
     }
     ExitApp()
