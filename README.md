@@ -16,7 +16,7 @@ The app saves your text and speed settings to an ini file so they are ready the 
 ## Installation
 
 1.  **Install AutoHotkey:** Download [AutoHotkey v2.0+](https://www.autohotkey.com/).
-2.  **Download Script:** Save the `background-typer.ahk` file.
+2.  **Download Script:** Save the `typer.ahk` file.
 3.  **Run:** Double-click the `.ahk` file to launch.
 
 -----
