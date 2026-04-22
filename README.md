@@ -2,6 +2,7 @@
 
 <img width="504" height="350" alt="image" src="https://github.com/user-attachments/assets/63ef76fb-2618-46f9-bd3c-673beefe3f9c" />
 
+
 A professional Windows utility developed in AutoHotkey v2 for simulating human-like keyboard input to background processes.
 
 ## Technical Overview
