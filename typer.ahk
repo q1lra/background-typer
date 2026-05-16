@@ -1,7 +1,6 @@
 #Requires AutoHotkey v2.0
 #NoTrayIcon
 
-; --- Data Persistence ---
 SettingsFile := A_ScriptDir "\typer-settings.ini"
 
 LastText := ""
@@ -11,22 +10,18 @@ if FileExist(SettingsFile) {
     SavedDelay := IniRead(SettingsFile, "Settings", "Speed (ms)", "60")
 }
 
-; --- GUI Definition ---
 MainGui := Gui("+AlwaysOnTop -MaximizeBox", "Typer")
 MainGui.SetFont("s9", "Segoe UI")
 
 MainGui.Add("Text", "w400", "Text:")
 InputEdit := MainGui.Add("Edit", "r10 w400 vInputData", LastText)
 
-; Reduced spacing (y+10 instead of y+15)
 MainGui.Add("Text", "xm y+10", "Speed (ms):")
 DelayEdit := MainGui.Add("Edit", "x+5 yp-3 w50", SavedDelay) 
 
-; Tightened bottom row
 StartBtn := MainGui.Add("Button", "xm y+12 w100 h30 Default", "Start")
 StartBtn.OnEvent("Click", StartTyping)
 
-; Status text aligned to the bottom right
 StatusDisplay := MainGui.Add("Text", "x280 yp+5 w120 Right", "Ready")
 
 MainGui.OnEvent("Close", SaveAndExit)
@@ -40,11 +35,9 @@ StartTyping(*) {
 
     BaseDelay := IsNumber(DelayEdit.Value) ? Integer(DelayEdit.Value) : 60
     
-    ; Save settings
     IniWrite(RawContent, SettingsFile, "Data", "LastText")
     IniWrite(BaseDelay, SettingsFile, "Settings", "Speed (ms)")
 
-    ; --- 3 SECOND COUNTDOWN ---
     Loop 3 {
         StatusDisplay.Value := "Wait " (4 - A_Index) "..."
         Sleep(1000)
